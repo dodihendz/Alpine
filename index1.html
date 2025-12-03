@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine JS</title>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script>
+      document.addEventListener("alpine:init", () => {
+        Alpine.store("mhs", {
+          year: 2000,
+          nama: ["ahmed", "ali", "roymon"],
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div x-data="{name: 'world'}">
+      <div x-data="{value: 100}">
+        <span x-text="name"></span>
+        <span x-text="value"></span>
+      </div>
+    </div>
+    <br />
+    <button x-data="{label:'click !'}" x-text="label"></button>
+    <br />
+    <br />
+    <div x-data="{ count: 0 }" class="p-6">
+      <button @click="count++" class="px-4 py-2 bg-blue-500 text-white rounded">
+        Increment
+      </button>
+      <span class="ml-4 text-lg">Count: <span x-text="count"></span></span>
+    </div>
+    <br />
+    <div x-data="{ messagea: 'Hello, Alpine.js!' }" class="p-6">
+      <input type="text" x-model="messagea" class="border p-2 rounded" />
+      <p class="mt-4 text-lg">Message: <span x-text="messagea"></span></p>
+    </div>
+    <div x-data>
+      <ul>
+        <template x-for="n in $store.mhs.nama" :key="n">
+          <li x-text="n"></li>
+        </template>
+      </ul>
+    </div>
+    <br />
+    <button x-data @click="alert($store.mhs.year)">Show Year</button>
+  </body>
+</html>
