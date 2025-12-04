@@ -43,7 +43,7 @@
         gone nh
       </div> -->
       <!--this is for button like toogle by if condition-->
-      <button
+      <!-- <button
         @click="open = !open"
         x-text="open ?  'tutup' : 'buka'"
         class="py-2 px-5 bg-slate-600 text-white rounded-md"
@@ -54,7 +54,135 @@
         <div class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded text-white">
           gone nh
         </div>
-      </template>
+      </template> -->
+      <!--this is for x-transition-->
+      <!-- <button
+        @click="open = !open"
+        x-text="open ?  'tutup' : 'buka'"
+        class="py-2 px-5 bg-slate-600 text-white rounded-md"
+      >
+        buka
+      </button> -->
+      <!-- <div x-show="open" x-transition.duration.1000 class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded text-white">
+        gone nh
+      </div> -->
+      <!-- <div
+        x-show="open"
+        x-transition.origin.top.left.duration.1000
+        class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded text-white"
+      >
+        gone nh
+      </div> -->
+      <!-- this is for x-bind-->
+      <!-- <button
+        @click="open = !open"
+        x-text="open ?  'tutup' : 'buka'"
+        x-bind:class="open ? 'bg-yellow-600' : 'bg-slate-600'"
+        class="py-2 px-5 text-white rounded-md"
+      >
+        buka
+      </button> -->
+      <!-- <div
+        x-show="open"
+        x-transition.origin.top.left.duration.1000
+        class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded text-white"
+      >
+        gone nh
+      </div> -->
     </div>
+    <!-- this is for event-->
+    <!-- <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow"
+      x-data="{  pesan: 'hellow you !' }"
+    > -->
+    <!-- <button
+        @click="alert(pesan)"
+        x-text="open ?  'tutup' : 'buka'"
+        x-bind:class="open ? 'bg-yellow-600' : 'bg-slate-600'"
+        class="py-2 px-5 text-white rounded-md bg-blue-400"
+      >
+        over here !
+      </button> -->
+    <!-- <button
+        @mouseenter="alert(pesan)"
+        x-text="open ?  'tutup' : 'buka'"
+        x-bind:class="open ? 'bg-yellow-600' : 'bg-slate-600'"
+        class="py-2 px-5 text-white rounded-md bg-blue-400"
+      >
+        over here !
+      </button> -->
+    <!-- <button
+        @dblclick="alert(pesan)"
+        x-text="open ?  'tutup' : 'buka'"
+        x-bind:class="open ? 'bg-yellow-600' : 'bg-slate-600'"
+        class="py-2 px-5 text-white rounded-md bg-blue-400"
+      >
+        over here !
+      </button> -->
+    <!-- </div> -->
+    <!-- this is for event Object-->
+    <!-- <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow"
+      x-data="{  pesan: 'hellow you !' }"
+    > -->
+      <!-- @click="console.dir($event.target.id)" -->
+      <!-- @click="console.log($event.target.id)" -->
+      <!-- @click="console.log($event.target.dataset.pesan)" -->
+      <!-- @click="console.log($event.target.classList.add('bg-yellow-500'))" -->
+      <!-- <button
+        id="tombolPesan"
+        @click="ubahWarna"
+        data-pesan="hey hooooo"
+        class="py-2 px-5 text-white rounded-md bg-blue-400"
+      >
+        over here !123
+      </button> -->
+    <!-- </div> -->
+    <!-- this is for keyboard event -->
+    <!-- <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow"
+      x-data="{  pesan: 'hellow you !' }"
+    > -->
+      <!-- @keyup.enter="alert('the data has been entered')" -->
+      <!-- @keyup="alert('the data has been entered')" -->
+      <!-- <label for="name" class="block mb-4 font-bold">Press Enter Key :</label>
+      <input
+        @keyup.shift.enter="alert('the data has been entered')"
+        type="text"
+        placeholder="press enter key"
+        class="p-2 rounded border"
+      />
+    </div> -->
+    <!-- this is for custome event -->
+    <!-- <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow"
+      x-data="{  pesan: 'hellow you !' }"
+      @log="alert('the data already sent' + $event.detail.nama)"
+    >
+      <button
+        @click="$dispatch('log',{nama:' you are kirim!'})"
+        class="py-2 px-5 text-white rounded-md mt-3 bg-slate-400"
+      >
+        over here
+      </button>
+    </div> -->
+     <!-- this is for custome event prevent -->
+    <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow"
+      x-data="{  pesan: 'hellow you !' }"
+      @log="alert('the data already sent' + $event.detail.nama)"
+    >
+      <button
+        @click="$dispatch('log',{nama:' you are kirim!'})"
+        class="py-2 px-5 text-white rounded-md mt-3 bg-slate-400"
+      >
+        over here
+      </button>
+    </div>
+    <script>
+      function ubahWarna(e) {
+        e.target.classList.add("bg-orange-100");
+      }
+    </script>
   </body>
 </html>
