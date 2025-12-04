@@ -8,23 +8,53 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <body>
+    <!-- x-data="{name : 'the name'
+      , value: 5
+      , link: `<a href='index1.html'>Go!</a>`}" -->
     <div
       class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow"
-      x-data="{name : 'the name'
-      , value: 5
-      , link: `<a href='index1.html'>Go!</a>`}"
+      x-data="{ open: false }"
     >
+      <!-- this is for conditon  -->
       <!-- <h1
         class="text-5xl font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent drop-shadow"
       >
         hey you're <span x-text="value"></span> and the value is
         <span x-text="value % 2 === 0 ? 'even' : 'odd'"></span>
       </h1> -->
+      <!-- this is for link-->
       <!-- <h1
         class="text-5xl font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent drop-shadow"
       >
         HEY YOU'RE <span x-html="link"></span>
       </h1> -->
+      <!--this is for button like toogle-->
+      <!-- <button
+        @click="open = !open"
+        x-text="open ?  'tutup' : 'buka'"
+        class="py-2 px-5 bg-slate-600 text-white rounded-md"
+      >
+        buka
+      </button>
+      <div
+        x-show="open"
+        class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded text-white"
+      >
+        gone nh
+      </div> -->
+      <!--this is for button like toogle by if condition-->
+      <button
+        @click="open = !open"
+        x-text="open ?  'tutup' : 'buka'"
+        class="py-2 px-5 bg-slate-600 text-white rounded-md"
+      >
+        buka
+      </button>
+      <template x-if="open">
+        <div class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded text-white">
+          gone nh
+        </div>
+      </template>
     </div>
   </body>
 </html>
