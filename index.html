@@ -81,8 +81,8 @@
         class="py-2 px-5 text-white rounded-md"
       >
         buka
-      </button> -->
-      <!-- <div
+      </button>
+      <div
         x-show="open"
         x-transition.origin.top.left.duration.1000
         class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded text-white"
@@ -125,11 +125,11 @@
       class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow"
       x-data="{  pesan: 'hellow you !' }"
     > -->
-      <!-- @click="console.dir($event.target.id)" -->
-      <!-- @click="console.log($event.target.id)" -->
-      <!-- @click="console.log($event.target.dataset.pesan)" -->
-      <!-- @click="console.log($event.target.classList.add('bg-yellow-500'))" -->
-      <!-- <button
+    <!-- @click="console.dir($event.target.id)" -->
+    <!-- @click="console.log($event.target.id)" -->
+    <!-- @click="console.log($event.target.dataset.pesan)" -->
+    <!-- @click="console.log($event.target.classList.add('bg-yellow-500'))" -->
+    <!-- <button
         id="tombolPesan"
         @click="ubahWarna"
         data-pesan="hey hooooo"
@@ -143,9 +143,9 @@
       class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow"
       x-data="{  pesan: 'hellow you !' }"
     > -->
-      <!-- @keyup.enter="alert('the data has been entered')" -->
-      <!-- @keyup="alert('the data has been entered')" -->
-      <!-- <label for="name" class="block mb-4 font-bold">Press Enter Key :</label>
+    <!-- @keyup.enter="alert('the data has been entered')" -->
+    <!-- @keyup="alert('the data has been entered')" -->
+    <!-- <label for="name" class="block mb-4 font-bold">Press Enter Key :</label>
       <input
         @keyup.shift.enter="alert('the data has been entered')"
         type="text"
@@ -166,18 +166,161 @@
         over here
       </button>
     </div> -->
-     <!-- this is for custome event prevent -->
-    <div
+    <!-- this is for custome event prevent -->
+    <!-- <div
       class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow"
       x-data="{  pesan: 'hellow you !' }"
       @log="alert('the data already sent' + $event.detail.nama)"
     >
+      <form
+        action="/post"
+        @submit.prevent="alert('data send by another function')"
+      >
+        <label for="name" class="block mb-4 font-bold">Press Enter Key :</label>
+        <input
+          @keyup.shift.enter="alert('the data has been entered')"
+          type="text"
+          placeholder="press enter key"
+          class="p-2 rounded border"
+        />
+        <br />
+        <button
+          type="submit"
+          class="py-2 px-5 text-white rounded-md mt-3 bg-slate-400"
+        >
+          over here
+        </button>
+      </form>
+    </div> -->
+    <!-- this is for custome event bubbling stop for parent and child -->
+    <!-- <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow"
+      x-data="{  pesan: 'hellow you !' }"
+      @click="alert('div here click !')"
+    >
+      <label for="name" class="block mb-4 font-bold">Press Enter Key :</label>
+      <input
+        @keyup.shift.enter="alert('the data has been entered')"
+        type="text"
+        placeholder="press enter key"
+        class="p-2 rounded border"
+      />
+      <br />
       <button
-        @click="$dispatch('log',{nama:' you are kirim!'})"
+        @click.stop="alert('button here click')"
         class="py-2 px-5 text-white rounded-md mt-3 bg-slate-400"
       >
         over here
       </button>
+    </div> -->
+    <!-- this is for clicking everywhere you want to enable the function of toogle -->
+    <!-- <div
+      class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow"
+      x-data="{ open: false }"
+    > -->
+    <!--@click.outside="open = false"-->
+    <!-- <button
+        @click="open = !open"
+        @keyup.esc.window="open = false"
+        x-text="open ?  'tutup' : 'buka'"
+        x-bind:class="open ? 'bg-yellow-600' : 'bg-slate-600'"
+        class="py-2 px-5 text-white rounded-md"
+      >
+        buka
+      </button>
+      <div
+        x-show="open"
+        x-transition.origin.top.left.duration.1000
+        class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded text-white"
+      >
+        gone nh
+      </div> -->
+    <!-- </div> -->
+    <!-- this is for event once / debounce  -->
+    <!-- <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow"
+      x-data="{  pesan: 'hellow you !' }"
+      @log="alert('the data already sent' + $event.detail.nama)"
+    >
+      <form
+        action="/post"
+        @submit.prevent="alert('data send by another function')"
+      >
+        <label for="name" class="block mb-4 font-bold">Press Enter Key :</label>
+        <input
+          @keyup.debounce.500ms="console.log($event.target.value)"
+          type="text"
+          placeholder="press enter key"
+          class="p-2 rounded border"
+        />
+        <br />
+        <button
+          type="submit"
+          class="py-2 px-5 text-white rounded-md mt-3 bg-slate-400"
+        >
+          over here
+        </button>
+      </form>
+    </div> -->
+    <!-- this is for MODEL  -->
+    <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow"
+      x-data="{pesan:'',open:true, hobby: [] }"
+    >
+      <label for="name" class="block mb-4 font-bold"
+        >Press Enter message :</label
+      >
+      <textarea
+        x-model="pesan"
+        type="text"
+        placeholder="press enter key"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      ></textarea>
+      <br />
+      <!-- <span x-text="pesan"></span> -->
+      <br />
+      <span
+        x-text="pesan.length"
+        class="text-lg flex text-green-500 font-bold"
+        :class="pesan.length > 20 ? 'text-red-500' : ''"
+      ></span>
+      <br />
+      <input type="checkbox" id="checkbox" x-model="open" />
+      <label for="checkbox" x-text="!open ? 'kosong':'terisi'"></label>
+      <br />
+      <div class="mt-5">
+        <div class="flex items-center mb-2">
+          <input
+            type="checkbox"
+            id="writing"
+            value="writing"
+            class="w-4 h-4 text-blue-600 border-gray-300 rounded"
+            x-model="hobby"
+          />
+          <label for="writing" class="ml-2 text-sm">writing</label>
+          <input
+            type="checkbox"
+            x-model="hobby"
+            id="singing"
+            value="singing"
+            class="w-4 h-4 text-blue-600 border-gray-300 rounded"
+          />
+          <label for="singing" class="ml-2 text-sm">singing</label>
+          <input
+            type="checkbox"
+            x-model="hobby"
+            id="coding"
+            value="coding"
+            class="w-4 h-4 text-blue-600 border-gray-300 rounded"
+          />
+          <label for="coding" class="ml-2 text-sm">coding</label>
+        </div>
+        <p class="text-left text-sm">
+          Hobby :
+          <span x-text="hobby.map(h=>h.charAt(0).toUpperCase()+h.slice(1))">
+          </span>
+        </p>
+      </div>
     </div>
     <script>
       function ubahWarna(e) {
